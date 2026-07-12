@@ -3,17 +3,22 @@ import os
 import json
 from dotenv import load_dotenv
 from google import genai
+from groq import Groq
 
 # Load environment variables
 load_dotenv()
 
-api_key = os.getenv("GEMINI_API_KEY")
+gemini_key = os.getenv("GEMINI_API_KEY")
+groq_key = os.getenv("GROQ_API_KEY")
 
-if not api_key:
+if not gemini_key:
     raise ValueError("GEMINI_API_KEY not found.")
 
-# Gemini Client
-client = genai.Client(api_key=api_key)
+client = genai.Client(api_key=gemini_key)
+
+groq_client = None
+if groq_key:
+    groq_client = Groq(api_key=groq_key)
 
 
 def fetch_repository(repo_name):
@@ -122,20 +127,16 @@ def recommend_issues(repo, readme, issues):
 You are an Open Source Mentor.
 
 Repository Information:
-
-{repo}
+{json.dumps(repo, indent=2)}
 
 README:
-
 {readme[:4000]}
 
 Open Issues:
-
-{issues}
+{json.dumps(issues, indent=2)}
 
 Task:
-
-Recommend the top beginner-friendly issues from the repository.
+Recommend the top beginner-friendly issues.
 
 For each issue provide:
 - Issue Title
@@ -148,34 +149,44 @@ For each issue provide:
 Return the result in clean Markdown.
 """
 
+    # ---------- Try Gemini ----------
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=prompt
         )
 
         return response.text
 
-    except Exception as e:
-        return f"""
-==========================
-Gemini API Error
-==========================
+    except Exception as gemini_error:
 
-{e}
+        print("\nGemini failed. Trying Groq...\n")
 
-Possible reasons:
-- Gemini API quota exceeded.
-- Invalid API key.
-- Internet connection issue.
+        # ---------- Fallback to Groq ----------
+        if groq_client is not None:
+            try:
+                response = groq_client.chat.completions.create(
+                    model="llama-3.3-70b-versatile",
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": prompt
+                        }
+                    ]
+                )
+
+                return response.choices[0].message.content
+
+            except Exception as groq_error:
+                return f"""
+Gemini Error:
+{gemini_error}
+
+Groq Error:
+{groq_error}
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt     
-    )
-
-    return response.text
+        return f"Gemini Error:\n{gemini_error}"
 
 def main():
 
