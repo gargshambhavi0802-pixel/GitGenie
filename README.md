@@ -2,98 +2,128 @@
 
 ### AI-Powered Open Source Contribution Assistant
 
-GitGenie is an AI-based assistant that helps beginners understand GitHub repositories and make meaningful open-source contributions.
+GitGenie is an AI-powered assistant that helps beginners understand GitHub repositories and make meaningful open-source contributions.
 
-It uses AI agents to analyze repositories, explain projects, recommend repositories, and create contribution roadmaps based on real GitHub data.
+It uses multiple AI agents to analyze repositories, recommend projects, explain codebases, identify suitable issues, and create personalized contribution roadmaps using real GitHub data.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
-### 1. Repository Explainer Agent
+## 1. Repository Explainer Agent
 
 Helps beginners understand any GitHub repository.
 
 It provides:
 
-* Repository overview
-* Tech stack information
-* Important files explanation
-* Beginner entry points
-* Project understanding guidance
+- Repository overview
+- Tech stack information
+- Important files explanation
+- Beginner entry points
+- Project understanding guidance
 
 ---
 
-### 2. Contribution Roadmap Agent
+## 2. Repository Recommendation Agent
 
-Creates a practical contribution plan for a specific repository.
-
-It provides:
-
-* Repository setup steps
-* Beginner contribution suggestions
-* Intermediate and advanced contribution ideas
-* Suitable GitHub issues
-* Required skills
-* Contribution workflow
-* 30-day contribution plan
-
----
-
-### 3. Repository Recommendation Agent
-
-Helps users discover suitable open-source repositories based on their interests and skills.
+Helps users discover suitable open-source repositories based on their interests and skill level.
 
 It analyzes:
 
-* Repository popularity
-* Programming language
-* Difficulty level
-* Beginner friendliness
+- Repository popularity
+- Programming language
+- Difficulty level
+- Beginner friendliness
 
 ---
 
-### 4. Skill Analysis Agent
+## 3. Skill Analysis Agent
 
-Helps users understand the skills required for contributing to open-source projects.
+Helps contributors understand the skills required for a particular repository.
 
 It recommends:
 
-* Technologies to learn
-* Required tools
-* Learning direction
+- Required programming languages
+- Frameworks and tools
+- Learning path
+- Skills needed before contributing
 
 ---
 
-## 🏗️ Project Architecture
+## 4. Issue Recommendation Agent
+
+Analyzes GitHub issues and recommends suitable issues for contributors.
+
+It provides:
+
+- Beginner-friendly issue suggestions
+- Issue difficulty analysis
+- Required skills
+- Reason why an issue is suitable
+
+---
+
+## 5. Contribution Roadmap Agent
+
+Creates a repository-specific contribution roadmap.
+
+It provides:
+
+- Repository setup instructions
+- Where beginners should start
+- First contribution suggestions
+- Beginner, intermediate, and advanced contribution opportunities
+- Open issue analysis
+- Contribution workflow
+- 30-day contribution plan
+
+---
+
+## 6. Contribution Checklist Agent
+
+Helps contributors prepare before submitting their Pull Request.
+
+It provides:
+
+- Pre-contribution checklist
+- Code quality reminders
+- Testing checklist
+- Git workflow guidance
+- PR submission best practices
+
+---
+
+# 🏗️ Project Structure
 
 ```
 GitGenie
 │
 ├── repository_explainer_agent.py
-├── contribution_roadmap_agent.py
 ├── repository_recommendation_agent.py
+├── contribution_roadmap_agent.py
+├── contribution_checklist_agent.py
+├── issue_recommendation_agent.py
 ├── skill_agent.py
 │
-├── .env
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-* Python
-* Google Gemini API
-* Groq API (Fallback LLM)
-* GitHub REST API
-* OpenAI SDK compatible clients
-* python-dotenv
-* Requests
+- Python
+- Google Gemini API
+- Groq API (Fallback LLM)
+- GitHub REST API
+- OpenAI SDK Compatible Client
+- Requests
+- python-dotenv
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
 Clone the repository:
 
@@ -101,7 +131,7 @@ Clone the repository:
 git clone https://github.com/siddhigrg1201/GitGenie.git
 ```
 
-Move into the project folder:
+Navigate into the project:
 
 ```bash
 cd GitGenie
@@ -115,9 +145,9 @@ pip install -r requirements.txt
 
 ---
 
-## 🔑 Environment Setup
+# 🔑 Environment Setup
 
-Create a `.env` file:
+Create a `.env` file in the project root:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
@@ -126,18 +156,14 @@ GROQ_API_KEY=your_groq_api_key
 
 ---
 
-## ▶️ Usage
+# ▶️ Usage
 
-### Repository Explainer
+Run any agent individually:
+
+## Repository Explainer
 
 ```bash
 python repository_explainer_agent.py
-```
-
-Enter repository:
-
-```
-owner/repository
 ```
 
 Example:
@@ -148,7 +174,7 @@ tiangolo/fastapi
 
 ---
 
-### Contribution Roadmap
+## Contribution Roadmap
 
 ```bash
 python contribution_roadmap_agent.py
@@ -162,49 +188,80 @@ langchain-ai/langchain
 
 ---
 
-## 🔄 AI Model Fallback System
+# 🔄 AI Fallback System
 
-GitGenie uses a fallback mechanism:
+GitGenie uses multiple AI providers to improve reliability.
 
 ```
 User Request
       |
       ↓
-Gemini API
+ Gemini API
       |
       ↓
-If unavailable
+ If unavailable
       |
       ↓
-Groq API
+ Groq API
 ```
 
-This ensures responses can still be generated even when the primary AI provider reaches its limit.
+If Gemini reaches its usage limit, the system automatically switches to Groq.
 
 ---
 
-## 🎯 Future Improvements
+# 🌟 Agent Workflow
 
-* Web-based UI using Streamlit
-* GitHub authentication
-* Pull Request analysis agent
-* Issue difficulty prediction
-* Personalized contribution recommendations
-* Multi-agent workflow using LangGraph
+```
+Repository Input
+        |
+        ↓
+Repository Recommendation Agent
+        |
+        ↓
+Repository Explainer Agent
+        |
+        ↓
+Skill Analysis Agent
+        |
+        ↓
+Issue Recommendation Agent
+        |
+        ↓
+Contribution Roadmap Agent
+        |
+        ↓
+Contribution Checklist Agent
+        |
+        ↓
+Ready for Open Source Contribution 🚀
+```
 
 ---
 
-## 👩‍💻Contributors
+# 🎯 Future Improvements
 
-**Siddhi Garg**
+- Streamlit/Web interface
+- GitHub authentication
+- Pull Request analysis agent
+- Automated code review agent
+- Issue difficulty prediction
+- Personalized contributor profiles
+- Multi-agent orchestration using LangGraph
 
-**Shambhavi Garg**
+---
 
-**Shivangi Gupta**
+# 👩‍💻 Contributors
 
-**Shruti Kumari**
+### Siddhi Garg
+GitHub: https://github.com/siddhigrg1201
 
+### Shambhavi Garg
 
-GitHub:
-https://github.com/siddhigrg1201
+### Shivangi Gupta
 
+### Shruti Kumari
+
+---
+
+# 📌 Goal
+The goal of GitGenie is to reduce the entry barrier for beginners in open source by providing AI-powered guidance from repository discovery to successful contribution.
