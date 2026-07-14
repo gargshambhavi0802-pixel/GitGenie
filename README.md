@@ -1,4 +1,4 @@
-# GitGenie 🧞‍♂️
+# GitGenie
 
 ### AI-Powered Open Source Contribution Assistant
 
@@ -197,10 +197,14 @@ This ensures responses can still be generated even when the primary AI provider 
 ## 👩‍💻Contributors
 
 **Siddhi Garg**
+
 **Shambhavi Garg**
+
 **Shivangi Gupta**
+
 **Shruti Kumari**
 
 
 GitHub:
 https://github.com/siddhigrg1201
+
