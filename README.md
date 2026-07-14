@@ -158,15 +158,21 @@ GROQ_API_KEY=your_groq_api_key
 
 # ▶️ Usage
 
-Run any agent individually:
+Run any agent individually according to your requirement.
 
-## Repository Explainer
+---
+
+## 1. Repository Explainer Agent
+
+Explains a GitHub repository and helps beginners understand the project.
+
+Run:
 
 ```bash
 python repository_explainer_agent.py
 ```
 
-Example:
+Example input:
 
 ```
 tiangolo/fastapi
@@ -174,16 +180,92 @@ tiangolo/fastapi
 
 ---
 
-## Contribution Roadmap
+## 2. Repository Recommendation Agent
+
+Recommends suitable open-source repositories based on user interests and skills.
+
+Run:
+
+```bash
+python repository_recommendation_agent.py
+```
+
+Example input:
+
+```
+Machine Learning beginner projects
+```
+
+---
+
+## 3. Skill Analysis Agent
+
+Analyzes the skills required to contribute to a repository.
+
+Run:
+
+```bash
+python skill_agent.py
+```
+
+Example input:
+
+```
+langchain-ai/langchain
+```
+
+---
+
+## 4. Issue Recommendation Agent
+
+Finds and recommends beginner-friendly GitHub issues.
+
+Run:
+
+```bash
+python issue_recommendation_agent.py
+```
+
+Example input:
+
+```
+pallets/flask
+```
+
+---
+
+## 5. Contribution Roadmap Agent
+
+Creates a step-by-step contribution roadmap for a repository.
+
+Run:
 
 ```bash
 python contribution_roadmap_agent.py
 ```
 
-Example:
+Example input:
 
 ```
 langchain-ai/langchain
+```
+
+---
+
+## 6. Contribution Checklist Agent
+
+Generates a checklist to help contributors prepare their Pull Request.
+
+Run:
+
+```bash
+python contribution_checklist_agent.py
+```
+
+Example input:
+
+```
+tiangolo/fastapi
 ```
 
 ---
