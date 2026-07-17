@@ -38,6 +38,18 @@ class GeminiGroqFallbackLLM(BaseLLM):
            os.getenv("GROQ_API_KEY_4"),
            os.getenv("GROQ_API_KEY_5"),
            os.getenv("GROQ_API_KEY_6"),
+           os.getenv("GROQ_API_KEY_7"),
+           os.getenv("GROQ_API_KEY_8"),
+           os.getenv("GROQ_API_KEY_9"),
+           os.getenv("GROQ_API_KEY_10"),
+           os.getenv("GROQ_API_KEY_11"),
+           os.getenv("GROQ_API_KEY_12"),
+           os.getenv("GROQ_API_KEY_13"),
+           os.getenv("GROQ_API_KEY_14"),
+           os.getenv("GROQ_API_KEY_15"),
+           os.getenv("GROQ_API_KEY_16"),
+           os.getenv("GROQ_API_KEY_17"),
+           os.getenv("GROQ_API_KEY_18"),
        ]
 
        # Remove empty values
